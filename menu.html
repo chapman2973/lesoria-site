@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Меню — Лесория</title>
+  <meta name="description" content="Меню кофейни Лесория: завтраки, тосты, салаты, супы, основные блюда и добавки. Берёзовский, Восточная 8/1." />
+
+  <meta property="og:title" content="Меню — Лесория" />
+  <meta property="og:description" content="Завтраки, паста, салаты и добавки. Берёзовский · Восточная 8/1." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-cover.svg" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+
+<body>
+  <header class="sticky top-0 z-50 border-b border-line bg-paper/75 backdrop-blur">
+    <div class="container-page h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 focus-ring rounded-xl px-2 py-1">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-forest text-white text-sm font-semibold">Л</span>
+        <div class="leading-tight">
+          <div class="text-sm font-semibold tracking-tight">Лесория</div>
+          <div class="text-xs text-ink/60 -mt-0.5">Меню</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a data-navlink="true" class="navlink focus-ring" href="index.html">Главная</a>
+        <a data-navlink="true" class="navlink focus-ring" href="menu.html">Меню</a>
+        <a data-navlink="true" class="navlink focus-ring" href="about.html">О нас</a>
+        <a data-navlink="true" class="navlink focus-ring" href="contacts.html">Контакты</a>
+        <a data-navlink="true" class="navlink focus-ring" href="reviews.html">Отзывы</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="contacts.html#form" class="hidden sm:inline-flex btn btn-primary focus-ring">Написать →</a>
+
+        <button id="cartBtn" class="btn focus-ring relative" type="button" aria-label="Открыть корзину">
+          🛒 Корзина
+          <span id="cartCount"
+            class="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[11px] leading-[18px] text-center hidden">
+          </span>
+        </button>
+
+        <button id="menuBtn" class="md:hidden btn btn-ghost focus-ring" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="overlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm"></div>
+    <div id="mobileMenu" class="hidden fixed top-0 right-0 h-full w-[86%] max-w-sm bg-paper shadow-soft border-l border-line">
+      <div class="p-4 flex items-center justify-between">
+        <div class="text-sm font-semibold">Меню</div>
+        <button class="js-close-menu btn focus-ring" type="button" aria-label="Закрыть меню">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="px-4 pb-5">
+        <div class="divider mb-3"></div>
+        <nav class="grid gap-1">
+          <a data-navlink="true" class="navlink focus-ring" href="index.html">Главная</a>
+          <a data-navlink="true" class="navlink focus-ring" href="menu.html">Меню</a>
+          <a data-navlink="true" class="navlink focus-ring" href="about.html">О нас</a>
+          <a data-navlink="true" class="navlink focus-ring" href="contacts.html">Контакты</a>
+          <a data-navlink="true" class="navlink focus-ring" href="reviews.html">Отзывы</a>
+        </nav>
+        <div class="mt-4 flex gap-2">
+          <a class="btn btn-primary focus-ring flex-1 justify-center" href="contacts.html#form">Забронировать / Написать</a>
+          <button class="js-close-menu btn focus-ring" type="button">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-page pt-10 pb-14">
+    <header class="card p-6 sm:p-8">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Меню</h1>
+      <p class="mt-2 text-sm sm:text-base text-ink/70">
+        Позиции и цены. Быстрый фильтр по категориям — кликай ниже 👇
+      </p>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        <button class="btn focus-ring" type="button" data-filter="all" aria-pressed="true">Все</button>
+        <button class="btn focus-ring" type="button" data-filter="breakfast" aria-pressed="false">Завтраки</button>
+        <button class="btn focus-ring" type="button" data-filter="toasts" aria-pressed="false">Тосты</button>
+        <button class="btn focus-ring" type="button" data-filter="salads" aria-pressed="false">Салаты</button>
+        <button class="btn focus-ring" type="button" data-filter="soups" aria-pressed="false">Супы</button>
+        <button class="btn focus-ring" type="button" data-filter="mains" aria-pressed="false">Основные</button>
+        <button class="btn focus-ring" type="button" data-filter="addons" aria-pressed="false">Добавки</button>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-2 text-xs text-ink/60">
+        <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="#breakfast"># Завтраки</a>
+        <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="#toasts"># Тосты</a>
+        <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="#salads"># Салаты</a>
+        <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="#soups"># Супы</a>
+        <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="#mains"># Основные</a>
+        <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="#addons"># Добавки</a>
+      </div>
+    </header>
+
+    <section class="mt-8 grid lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-8">
+        <!-- Завтраки -->
+        <section id="breakfast" class="card p-6 sm:p-8">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="section-title">Завтраки</h2>
+              <p class="section-subtitle">Лёгкие и сытные варианты для хорошего старта.</p>
+            </div>
+            <span class="badge">от 190 ₽</span>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3">
+            <article data-cat="breakfast" data-item data-id="grecha-pesto" data-name="Греча с песто и яйцом пашот" data-price="380"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Греча с песто и яйцом пашот</h3>
+                <div class="text-sm font-semibold">380 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Сбалансировано, зелёный акцент и нежная текстура.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Завтраки</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="breakfast" data-item data-id="shakshuka-ciabatta" data-name="Шакшука с чиабаттой" data-price="390"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Шакшука с чиабаттой</h3>
+                <div class="text-sm font-semibold">390 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Тёпло, пряно и идеально к утреннему кофе.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Завтраки</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="breakfast" data-item data-id="eggs-any" data-name="Омлет / глазунья / скрэмбл" data-price="190"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Омлет / глазунья / скрэмбл</h3>
+                <div class="text-sm font-semibold">190 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Классика, которую можно усилить добавками.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Завтраки</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="breakfast" data-item data-id="syrniki" data-name="Сырники с малиновым вареньем / сметаной / сгущенкой" data-price="380"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Сырники с малиновым вареньем / сметаной / сгущенкой</h3>
+                <div class="text-sm font-semibold">380 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Нежные, сладкие, аккуратные.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Завтраки</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Тосты -->
+        <section id="toasts" class="card p-6 sm:p-8 mt-6">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="section-title">Тосты</h2>
+              <p class="section-subtitle">Хруст, соусы и идеальная пара к кофе.</p>
+            </div>
+            <span class="badge">до 610 ₽</span>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3">
+            <article data-cat="toasts" data-item data-id="toast-salmon-avocado" data-name="Тост с лососем и авокадо" data-price="610"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тост с лососем и авокадо</h3>
+                <div class="text-sm font-semibold">610 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Нежно, сливочно, с морским акцентом.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Тосты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="toasts" data-item data-id="toast-tuna-pickle" data-name="Тост с тунцом и солёным огурцом" data-price="470"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тост с тунцом и солёным огурцом</h3>
+                <div class="text-sm font-semibold">470 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Выразительный вкус и лёгкая кислинка.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Тосты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="toasts" data-item data-id="sandwich-turkey-sousvide" data-name="Сэндвич с индейкой сувид" data-price="450"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Сэндвич с индейкой сувид</h3>
+                <div class="text-sm font-semibold">450 ₽</div>
+              </div>
+              <p class="mt-1 text-xs text-ink/60">Сытно, чисто, без лишнего.</p>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Тосты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Салаты -->
+        <section id="salads" class="card p-6 sm:p-8 mt-6">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="section-title">Салаты</h2>
+              <p class="section-subtitle">Свежесть и правильные сочетания.</p>
+            </div>
+            <span class="badge">до 620 ₽</span>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3">
+            <article data-cat="salads" data-item data-id="caesar-shrimp" data-name="Цезарь с креветками" data-price="620"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Цезарь с креветками</h3>
+                <div class="text-sm font-semibold">620 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Салаты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="salads" data-item data-id="caesar-turkey" data-name="Цезарь с индейкой сувид" data-price="480"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Цезарь с индейкой сувид</h3>
+                <div class="text-sm font-semibold">480 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Салаты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="salads" data-item data-id="caesar-salmon" data-name="Цезарь с лососем" data-price="620"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Цезарь с лососем</h3>
+                <div class="text-sm font-semibold">620 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Салаты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="salads" data-item data-id="greek-feta-pesto" data-name="Греческий с фетой и песто" data-price="390"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Греческий с фетой и песто</h3>
+                <div class="text-sm font-semibold">390 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Салаты</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Супы -->
+        <section id="soups" class="card p-6 sm:p-8 mt-6">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="section-title">Супы</h2>
+              <p class="section-subtitle">Тёплые, домашние, спокойные.</p>
+            </div>
+            <span class="badge">до 530 ₽</span>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3">
+            <article data-cat="soups" data-item data-id="pumpkin-feta" data-name="Тыквенный с фетой" data-price="370"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тыквенный с фетой</h3>
+                <div class="text-sm font-semibold">370 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Супы</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="soups" data-item data-id="pumpkin-shrimp" data-name="Тыквенный с креветками" data-price="530"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тыквенный с креветками</h3>
+                <div class="text-sm font-semibold">530 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Супы</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="soups" data-item data-id="chicken-noodles-spinach" data-name="Куриный суп лапша со шпинатом" data-price="310"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Куриный суп лапша со шпинатом</h3>
+                <div class="text-sm font-semibold">310 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Супы</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Основные блюда -->
+        <section id="mains" class="card p-6 sm:p-8 mt-6">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="section-title">Основные блюда</h2>
+              <p class="section-subtitle">Паста и горячие блюда — без лишней тяжести.</p>
+            </div>
+            <span class="badge">480–590 ₽</span>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3">
+            <article data-cat="mains" data-item data-id="carbonara" data-name="Карбонара" data-price="480"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Карбонара</h3>
+                <div class="text-sm font-semibold">480 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Основные</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="mains" data-item data-id="tagliatelle-turkey-mushrooms" data-name="Тальятелле с индейкой и грибами" data-price="480"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тальятелле с индейкой и грибами</h3>
+                <div class="text-sm font-semibold">480 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Основные</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="mains" data-item data-id="tagliatelle-pesto-shrimp" data-name="Тальятелле с домашним песто и креветками" data-price="590"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тальятелле с домашним песто и креветками</h3>
+                <div class="text-sm font-semibold">590 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Основные</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="mains" data-item data-id="tagliatelle-creamy-tomato-shrimp" data-name="Тальятелле в сливочно-томатном соусе с креветками" data-price="590"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Тальятелле в сливочно-томатном соусе с креветками</h3>
+                <div class="text-sm font-semibold">590 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Основные</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="mains" data-item data-id="shrimp-creamy-tomato-mash" data-name="Креветки в сливочно-томатном соусе с пюре" data-price="590"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Креветки в сливочно-томатном соусе с пюре</h3>
+                <div class="text-sm font-semibold">590 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Основные</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+
+            <article data-cat="mains" data-item data-id="beefstroganoff-mash" data-name="Бефстроганов с пюре" data-price="590"
+              class="card-hover rounded-2xl border border-line bg-white p-4">
+              <div class="flex justify-between gap-3">
+                <h3 class="text-sm font-medium">Бефстроганов с пюре</h3>
+                <div class="text-sm font-semibold">590 ₽</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <span class="text-xs text-ink/60">Основные</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">Добавить</button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <!-- Добавки (sidebar) -->
+      <aside class="lg:col-span-4">
+        <section id="addons" class="card p-6 sm:p-8 sticky top-20">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-semibold tracking-tight">Добавки</h2>
+              <p class="mt-2 text-sm text-ink/70">Усилить вкус — одним кликом.</p>
+            </div>
+            <span class="badge">60–260 ₽</span>
+          </div>
+
+          <div class="mt-5 grid gap-2">
+            <!-- add-ons become cart items too -->
+            <div data-cat="addons" data-item data-id="addon-turkey" data-name="Индейка сувид (добавка)" data-price="120"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Индейка сувид</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">120 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-salmon" data-name="Лосось (добавка)" data-price="260"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Лосось</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">260 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-shrimp" data-name="Креветки (добавка)" data-price="210"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Креветки</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">210 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-bacon" data-name="Бекон (добавка)" data-price="110"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Бекон</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">110 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-ciabatta" data-name="Чиабатта (добавка)" data-price="90"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Чиабатта</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">90 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-butter" data-name="Сливочное масло (добавка)" data-price="60"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Сливочное масло</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">60 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-cheddar" data-name="Сыр чеддер (добавка)" data-price="110"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Сыр чеддер</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">110 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-parmesan" data-name="Пармезан (добавка)" data-price="70"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Пармезан</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">70 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-veg-salad" data-name="Овощной салатик (добавка)" data-price="190"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Овощной салатик</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">190 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-cherry" data-name="Томаты черри (добавка)" data-price="90"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Томаты черри</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">90 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-egg" data-name="Доп. яйцо (добавка)" data-price="70"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Доп. яйцо</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">70 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-sourcream" data-name="Сметана (добавка)" data-price="50"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Сметана</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">50 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+
+            <div data-cat="addons" data-item data-id="addon-condensed" data-name="Сгущенка (добавка)" data-price="50"
+              class="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2">
+              <span class="text-sm">Сгущенка</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">50 ₽</span>
+                <button class="btn btn-primary focus-ring js-add-to-cart" type="button">+</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-5 text-xs text-ink/60 leading-relaxed">
+            Если есть пищевая аллергия — сообщите до оформления заказа. Меню может обновляться.
+          </p>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="border-t border-line bg-white">
+    <div class="container-page py-10">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <div class="text-sm font-semibold">Лесория — Авторская кофейня</div>
+          <div class="text-xs text-ink/60 mt-1">Берёзовский · Восточная 8/1</div>
+        </div>
+        <a class="btn btn-primary focus-ring" href="contacts.html#form">Написать →</a>
+      </div>
+      <div class="divider my-6"></div>
+      <div class="text-xs text-ink/50">© <span id="year"></span> Лесория</div>
+    </div>
+  </footer>
+
+  <button id="toTop"
+    class="fixed bottom-5 right-5 btn btn-primary focus-ring opacity-0 pointer-events-none"
+    type="button" aria-label="Наверх" aria-hidden="true">
+    ↑ Наверх
+  </button>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+
+  <!-- Page transition overlay -->
+  <div id="pageTransition"
+    class="page-transition-surface pointer-events-none fixed inset-0 z-[999] opacity-0 transition-opacity duration-200"
+    aria-hidden="true"></div>
+
+  <!-- Cart overlay -->
+  <div id="cartOverlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[998]" aria-hidden="true"></div>
+
+  <!-- Cart drawer -->
+  <aside id="cartDrawer"
+    class="hidden fixed top-0 right-0 h-full w-[92%] max-w-md bg-paper border-l border-line shadow-soft z-[999]">
+    <div class="p-4 flex items-center justify-between">
+      <div class="text-sm font-semibold">Корзина</div>
+      <button class="js-close-cart btn focus-ring" type="button" aria-label="Закрыть корзину">✕</button>
+    </div>
+
+    <div class="px-4"><div class="divider"></div></div>
+
+    <div class="p-4 overflow-auto h-[calc(100%-180px)]">
+      <div id="cartItems" class="grid gap-2"></div>
+      <div id="cartEmpty" class="mt-4 text-sm text-ink/60 hidden">Пока пусто. Добавь что-нибудь из меню 🙂</div>
+    </div>
+
+    <div class="p-4 border-t border-line bg-white">
+      <div class="flex items-center justify-between">
+        <div class="text-sm text-ink/70">Итого</div>
+        <div class="text-lg font-semibold"><span id="cartTotal">0</span> ₽</div>
+      </div>
+
+      <div class="mt-3 grid grid-cols-2 gap-2">
+        <button id="cartClear" class="btn focus-ring" type="button">Очистить</button>
+        <a class="btn btn-primary focus-ring justify-center" href="contacts.html#form">Оформить</a>
+      </div>
+
+      <p class="mt-3 text-xs text-ink/60">
+        * Без оплаты на сайте. Заказ/бронь подтверждаются через сообщения.
+      </p>
+    </div>
+  </aside>
+<div class="site-decor" aria-hidden="true"></div>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

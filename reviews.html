@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Отзывы — Лесория</title>
+  <meta name="description" content="Отзывы о кофейне Лесория. Карточки отзывов и ссылки, где можно оставить свой (Yandex/2GIS/Instagram)." />
+
+  <meta property="og:title" content="Отзывы — Лесория" />
+  <meta property="og:description" content="Спасибо, что делитесь впечатлениями. Ваши отзывы помогают нам становиться лучше." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./og-cover.svg" />
+
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <!-- Page transition overlay (must exist on every page) -->
+
+
+</head>
+
+<body>
+  <header class="sticky top-0 z-50 border-b border-line bg-paper/75 backdrop-blur">
+    <div class="container-page h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 focus-ring rounded-xl px-2 py-1">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-forest text-white text-sm font-semibold">Л</span>
+        <div class="leading-tight">
+          <div class="text-sm font-semibold tracking-tight">Лесория</div>
+          <div class="text-xs text-ink/60 -mt-0.5">Отзывы</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a data-navlink="true" class="navlink focus-ring" href="index.html">Главная</a>
+        <a data-navlink="true" class="navlink focus-ring" href="menu.html">Меню</a>
+        <a data-navlink="true" class="navlink focus-ring" href="about.html">О нас</a>
+        <a data-navlink="true" class="navlink focus-ring" href="contacts.html">Контакты</a>
+        <a data-navlink="true" class="navlink focus-ring" href="reviews.html">Отзывы</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="contacts.html#form" class="hidden sm:inline-flex btn btn-primary focus-ring">Написать →</a>
+        <button id="cartBtn" class="btn focus-ring relative" type="button" aria-label="Открыть корзину">
+  🛒 Корзина
+  <span id="cartCount"
+    class="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[11px] leading-[18px] text-center hidden">
+  </span>
+</button>
+
+        <button id="menuBtn" class="md:hidden btn btn-ghost focus-ring" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="overlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm"></div>
+    <div id="mobileMenu" class="hidden fixed top-0 right-0 h-full w-[86%] max-w-sm bg-paper shadow-soft border-l border-line">
+      <div class="p-4 flex items-center justify-between">
+        <div class="text-sm font-semibold">Меню</div>
+        <button class="js-close-menu btn focus-ring" type="button" aria-label="Закрыть меню">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="px-4 pb-5">
+        <div class="divider mb-3"></div>
+        <nav class="grid gap-1">
+          <a data-navlink="true" class="navlink focus-ring" href="index.html">Главная</a>
+          <a data-navlink="true" class="navlink focus-ring" href="menu.html">Меню</a>
+          <a data-navlink="true" class="navlink focus-ring" href="about.html">О нас</a>
+          <a data-navlink="true" class="navlink focus-ring" href="contacts.html">Контакты</a>
+          <a data-navlink="true" class="navlink focus-ring" href="reviews.html">Отзывы</a>
+        </nav>
+        <div class="mt-4 flex gap-2">
+          <a class="btn btn-primary focus-ring flex-1 justify-center" href="contacts.html#form">Забронировать / Написать</a>
+          <button class="js-close-menu btn focus-ring" type="button">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-page pt-10 pb-14">
+    <section class="card p-6 sm:p-10">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Отзывы</h1>
+      <p class="mt-2 text-sm sm:text-base text-ink/70 max-w-3xl">
+        Спасибо, что делитесь впечатлениями. Отзывы помогают нам сохранять качество и делать «Лесорию» ещё уютнее ✨
+      </p>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-3">
+        <article class="card-hover rounded-2xl border border-line bg-white p-5">
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-semibold">Алина</div>
+            <div class="text-xs text-ink/50">★★★★★</div>
+          </div>
+          <p class="mt-3 text-sm text-ink/70 leading-relaxed">
+            Очень спокойное место. Кофе отличный, а тост с лососем — топ. Вернусь снова.
+          </p>
+        </article>
+
+        <article class="card-hover rounded-2xl border border-line bg-white p-5">
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-semibold">Игорь</div>
+            <div class="text-xs text-ink/50">★★★★★</div>
+          </div>
+          <p class="mt-3 text-sm text-ink/70 leading-relaxed">
+            Завтраки вкусные, атмосфера «без суеты». Приятно посидеть и поработать.
+          </p>
+        </article>
+
+        <article class="card-hover rounded-2xl border border-line bg-white p-5">
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-semibold">Мария</div>
+            <div class="text-xs text-ink/50">★★★★★</div>
+          </div>
+          <p class="mt-3 text-sm text-ink/70 leading-relaxed">
+            Сырники очень нежные. Подача аккуратная, сервис тёплый.
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-8 card p-6 sm:p-7 bg-white">
+        <h2 class="text-xl font-semibold tracking-tight">Оставить отзыв</h2>
+        <p class="mt-2 text-sm text-ink/70">
+          Выберите площадку. Ссылки можно заменить на точные.
+        </p>
+
+        <div class="mt-5 grid sm:grid-cols-3 gap-3">
+          <a class="btn btn-primary focus-ring justify-center" target="_blank" rel="noreferrer"
+             href="https://yandex.ru/maps/">
+            Оставить на Yandex
+          </a>
+
+          <a class="btn focus-ring justify-center" target="_blank" rel="noreferrer"
+             href="https://2gis.ru/">
+            Оставить на 2GIS
+          </a>
+
+          <a class="btn focus-ring justify-center" target="_blank" rel="noreferrer"
+             href="https://instagram.com/lesoria_coffee">
+            Написать в Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line bg-white">
+    <div class="container-page py-10">
+      <div class="flex items-center justify-between">
+        <div class="text-xs text-ink/50">© <span id="year"></span> Лесория</div>
+        <a class="text-xs text-ink/60 focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="contacts.html">Контакты</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="toTop"
+    class="fixed bottom-5 right-5 btn btn-primary focus-ring opacity-0 pointer-events-none"
+    type="button" aria-label="Наверх" aria-hidden="true">
+    ↑ Наверх
+  </button>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+  <div id="pageTransition"
+  class="page-transition-surface pointer-events-none fixed inset-0 z-[999] opacity-0 transition-opacity duration-200"
+  aria-hidden="true"></div>
+  <!-- Cart overlay -->
+<div id="cartOverlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[998]" aria-hidden="true"></div>
+
+<!-- Cart drawer -->
+<aside id="cartDrawer"
+  class="hidden fixed top-0 right-0 h-full w-[92%] max-w-md bg-paper border-l border-line shadow-soft z-[999]">
+  <div class="p-4 flex items-center justify-between">
+    <div class="text-sm font-semibold">Корзина</div>
+    <button class="js-close-cart btn focus-ring" type="button" aria-label="Закрыть корзину">
+      ✕
+    </button>
+  </div>
+
+  <div class="px-4">
+    <div class="divider"></div>
+  </div>
+
+  <div class="p-4 overflow-auto h-[calc(100%-180px)]">
+    <div id="cartItems" class="grid gap-2"></div>
+    <div id="cartEmpty" class="mt-4 text-sm text-ink/60 hidden">Пока пусто. Добавь что-нибудь из меню 🙂</div>
+  </div>
+
+  <div class="p-4 border-t border-line bg-white">
+    <div class="flex items-center justify-between">
+      <div class="text-sm text-ink/70">Итого</div>
+      <div class="text-lg font-semibold"><span id="cartTotal">0</span> ₽</div>
+    </div>
+
+    <div class="mt-3 grid grid-cols-2 gap-2">
+      <button id="cartClear" class="btn focus-ring" type="button">Очистить</button>
+      <a class="btn btn-primary focus-ring justify-center" href="contacts.html#form">Оформить</a>
+    </div>
+
+    <p class="mt-3 text-xs text-ink/60">
+      * Без оплаты на сайте. Заказ/бронь подтверждаются через сообщения.
+    </p>
+  </div>
+</aside>
+<div class="site-decor" aria-hidden="true"></div>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

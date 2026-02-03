@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0E2A22"/>
+      <stop offset="1" stop-color="#12362C"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="1020" cy="120" r="190" fill="#C9A36A" opacity="0.10"/>
+  <circle cx="240" cy="560" r="240" fill="#C9A36A" opacity="0.08"/>
+
+  <text x="90" y="310" font-family="Inter, Arial, sans-serif" font-size="74" fill="#F7F7F5" font-weight="700">
+    Лесория
+  </text>
+  <text x="90" y="380" font-family="Inter, Arial, sans-serif" font-size="34" fill="#F7F7F5" opacity="0.85">
+    Авторская кофейня · Берёзовский · Восточная 8/1
+  </text>
+  <text x="90" y="450" font-family="Inter, Arial, sans-serif" font-size="26" fill="#F7F7F5" opacity="0.75">
+    Тишина · вкус · вдохновение
+  </text>
+</svg>

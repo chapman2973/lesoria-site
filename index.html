@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Лесория — Авторская кофейня в Берёзовском</title>
+  <meta name="description" content="Лесория — авторская кофейня в Берёзовском. Завтраки, паста, салаты, десерты и кофе. Восточная 8/1. Атмосфера тишины, вкуса и вдохновения." />
+
+  <meta property="og:title" content="Лесория — Авторская кофейня" />
+  <meta property="og:description" content="Берёзовский · Восточная 8/1 · Завтраки и авторский кофе. Место, куда хочется возвращаться." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./og-cover.svg" />
+
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <!-- Page transition overlay (must exist on every page) -->
+
+
+</head>
+
+<body>
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-50 border-b border-line bg-paper/75 backdrop-blur">
+    <div class="container-page h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 focus-ring rounded-xl px-2 py-1">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-forest text-white text-sm font-semibold">Л</span>
+        <div class="leading-tight">
+          <div class="text-sm font-semibold tracking-tight">Лесория</div>
+          <div class="text-xs text-ink/60 -mt-0.5">Авторская кофейня</div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a data-navlink="true" class="navlink focus-ring" href="index.html">Главная</a>
+        <a data-navlink="true" class="navlink focus-ring" href="menu.html">Меню</a>
+        <a data-navlink="true" class="navlink focus-ring" href="about.html">О нас</a>
+        <a data-navlink="true" class="navlink focus-ring" href="contacts.html">Контакты</a>
+        <a data-navlink="true" class="navlink focus-ring" href="reviews.html">Отзывы</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2">
+        <a href="contacts.html#form" class="hidden sm:inline-flex btn btn-primary focus-ring">
+          Написать
+          <span aria-hidden="true">→</span>
+          <button id="cartBtn" class="btn focus-ring relative" type="button" aria-label="Открыть корзину">
+  🛒 Корзина
+  <span id="cartCount"
+    class="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[11px] leading-[18px] text-center hidden">
+  </span>
+</button>
+
+        </a>
+
+        <!-- Burger -->
+        <button id="menuBtn" class="md:hidden btn btn-ghost focus-ring" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm"></div>
+
+    <!-- Mobile menu panel -->
+    <div id="mobileMenu" class="hidden fixed top-0 right-0 h-full w-[86%] max-w-sm bg-paper shadow-soft border-l border-line">
+      <div class="p-4 flex items-center justify-between">
+        <div class="text-sm font-semibold">Меню</div>
+        <button class="js-close-menu btn focus-ring" type="button" aria-label="Закрыть меню">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="px-4 pb-5">
+        <div class="divider-gold my-6"></div>
+        <nav class="grid gap-1">
+          <a data-navlink="true" class="navlink focus-ring" href="index.html">Главная</a>
+          <a data-navlink="true" class="navlink focus-ring" href="menu.html">Меню</a>
+          <a data-navlink="true" class="navlink focus-ring" href="about.html">О нас</a>
+          <a data-navlink="true" class="navlink focus-ring" href="contacts.html">Контакты</a>
+          <a data-navlink="true" class="navlink focus-ring" href="reviews.html">Отзывы</a>
+        </nav>
+
+        <div class="mt-4 flex gap-2">
+          <a class="btn btn-primary focus-ring flex-1 justify-center" href="contacts.html#form">Забронировать / Написать</a>
+          <button class="js-close-menu btn focus-ring" type="button">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="container-page pt-10 sm:pt-14">
+      <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+        <div class="lg:col-span-7 card p-6 sm:p-8">
+          <div class="inline-flex items-center gap-2">
+            <span class="badge">Берёзовский</span>
+            <span class="text-xs text-ink/60">Восточная 8/1</span>
+          </div>
+
+          <h1 class="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">
+            Лесория — место, где утро звучит тихо 🌿
+          </h1>
+          <p class="mt-3 text-sm sm:text-base text-ink/70 leading-relaxed">
+            Авторский кофе от шеф-бариста, завтраки и блюда от шеф-повара.
+            Тёплая атмосфера без лишнего шума — чтобы было вкусно, спокойно и по-настоящему.
+          </p>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="contacts.html#form" class="btn btn-primary focus-ring">
+              Забронировать / Написать <span aria-hidden="true">→</span>
+            </a>
+            <a href="menu.html" class="btn focus-ring">
+              Смотреть меню
+            </a>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-3 gap-3">
+            <div class="chip">
+              <span class="inline-flex h-2 w-2 rounded-full bg-forest"></span>
+              <span class="text-ink/70">Завтраки</span>
+            </div>
+            <div class="chip">
+              <span class="inline-flex h-2 w-2 rounded-full bg-forest"></span>
+              <span class="text-ink/70">Паста и салаты</span>
+            </div>
+            <div class="chip">
+              <span class="inline-flex h-2 w-2 rounded-full bg-forest"></span>
+              <span class="text-ink/70">Авторский кофе</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 card p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-sm font-semibold tracking-tight">Сегодня в фокусе</div>
+            <p class="mt-2 text-sm text-ink/70 leading-relaxed">
+              Тосты, шакшука, паста и любимые классические позиции — без перегруза,
+              с понятными вкусами и аккуратной подачей.
+            </p>
+          </div>
+
+          <div class="mt-6 grid gap-3">
+            <a href="menu.html?cat=breakfast#breakfast" class="card-hover rounded-2xl border border-line bg-white p-4 focus-ring">
+              <div class="flex items-center justify-between">
+                <div class="text-sm font-medium">Завтраки</div>
+                <div class="text-xs text-ink/60">от 190 ₽</div>
+              </div>
+              <div class="mt-1 text-xs text-ink/60">Греча с песто, шакшука, омлет…</div>
+            </a>
+
+            <a href="menu.html?cat=mains#mains" class="card-hover rounded-2xl border border-line bg-white p-4 focus-ring">
+              <div class="flex items-center justify-between">
+                <div class="text-sm font-medium">Основные блюда</div>
+                <div class="text-xs text-ink/60">от 480 ₽</div>
+              </div>
+              <div class="mt-1 text-xs text-ink/60">Карбонара, тальятелле, бефстроганов…</div>
+            </a>
+
+            <a href="contacts.html#how" class="card-hover rounded-2xl border border-line bg-white p-4 focus-ring">
+              <div class="flex items-center justify-between">
+                <div class="text-sm font-medium">Как нас найти</div>
+                <div class="text-xs text-ink/60">карта</div>
+              </div>
+              <div class="mt-1 text-xs text-ink/60">Берёзовский · Восточная 8/1</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to find + map -->
+    <section id="how" class="container-page mt-10 sm:mt-14 pb-14">
+      <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+        <div class="lg:col-span-5 card p-6 sm:p-8">
+          <h2 class="section-title">Как нас найти</h2>
+          <p class="section-subtitle">
+            Берёзовский, Восточная 8/1. Удобнее всего — по маршруту в навигаторе.
+          </p>
+
+          <div class="mt-6 grid gap-3">
+            <a class="btn btn-primary focus-ring justify-center"
+               href="https://yandex.ru/maps/?rtext=~%D0%91%D0%B5%D1%80%D1%91%D0%B7%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F%208%2F1&rtt=auto"
+               target="_blank" rel="noreferrer">
+              Построить маршрут (Yandex)
+            </a>
+            <a class="btn focus-ring justify-center"
+               href="https://www.google.com/maps/dir/?api=1&destination=%D0%91%D0%B5%D1%80%D1%91%D0%B7%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F%208%2F1"
+               target="_blank" rel="noreferrer">
+              Построить маршрут (Google)
+            </a>
+
+            <div class="divider"></div>
+
+            <a class="btn focus-ring justify-center" href="https://instagram.com/lesoria_coffee" target="_blank" rel="noreferrer">
+              Написать в Instagram
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 card overflow-hidden">
+          <!-- Мини-карта iframe (placeholder): можно заменить ссылку на точный виджет -->
+          <iframe
+            title="Карта — Лесория"
+            class="w-full h-[320px] sm:h-[360px] border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://yandex.ru/map-widget/v1/?text=%D0%91%D0%B5%D1%80%D1%91%D0%B7%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F%208%2F1&z=16"
+          ></iframe>
+          <div class="p-4 sm:p-5 border-t border-line bg-white">
+            <div class="text-sm font-medium">Лесория — Авторская кофейня</div>
+            <div class="text-xs text-ink/60 mt-1">Берёзовский · Восточная 8/1</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-line bg-white">
+    <div class="container-page py-10">
+      <div class="grid md:grid-cols-12 gap-6">
+        <div class="md:col-span-5">
+          <div class="text-sm font-semibold">Лесория — Авторская кофейня</div>
+          <p class="mt-2 text-sm text-ink/70 leading-relaxed">
+            Берёзовский, Восточная 8/1. Тёплое место для кофе, завтраков и спокойных встреч.
+          </p>
+        </div>
+
+        <div class="md:col-span-7 grid sm:grid-cols-3 gap-4">
+          <div>
+            <div class="text-xs font-semibold text-ink/60">Контакты</div>
+            <div class="mt-2 grid gap-2 text-sm">
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="https://instagram.com/lesoria_coffee" target="_blank" rel="noreferrer">Instagram</a>
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="mailto:lesoria@example.com">Email</a>
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="tel:+70000000000">Телефон (placeholder)</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold text-ink/60">Документы</div>
+            <div class="mt-2 grid gap-2 text-sm">
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="contacts.html#policy">Политика</a>
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="contacts.html#offer">Оферта</a>
+              <span class="text-xs text-ink/50 px-2 py-1">Юр. инфо — placeholder</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold text-ink/60">Навигация</div>
+            <div class="mt-2 grid gap-2 text-sm">
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="menu.html">Меню</a>
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="about.html">О нас</a>
+              <a class="focus-ring rounded-lg px-2 py-1 hover:bg-black/5" href="reviews.html">Отзывы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider my-6"></div>
+      <div class="text-xs text-ink/50">
+        © <span id="year"></span> Лесория. Все материалы — демонстрационные. Замените контакты и юридические тексты перед публикацией.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="toTop"
+    class="fixed bottom-5 right-5 btn btn-primary focus-ring opacity-0 pointer-events-none"
+    type="button" aria-label="Наверх" aria-hidden="true">
+    ↑ Наверх
+  </button>
+
+  <script>
+    // маленькая деталь: год в футере (без зависимости от main.js)
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+  <div id="pageTransition"
+  class="page-transition-surface pointer-events-none fixed inset-0 z-[999] opacity-0 transition-opacity duration-200"
+  aria-hidden="true"></div>
+  <!-- Cart overlay -->
+<div id="cartOverlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[998]" aria-hidden="true"></div>
+
+<!-- Cart drawer -->
+<aside id="cartDrawer"
+  class="hidden fixed top-0 right-0 h-full w-[92%] max-w-md bg-paper border-l border-line shadow-soft z-[999]">
+  <div class="p-4 flex items-center justify-between">
+    <div class="text-sm font-semibold">Корзина</div>
+    <button class="js-close-cart btn focus-ring" type="button" aria-label="Закрыть корзину">
+      ✕
+    </button>
+  </div>
+
+  <div class="px-4">
+    <div class="divider"></div>
+  </div>
+
+  <div class="p-4 overflow-auto h-[calc(100%-180px)]">
+    <div id="cartItems" class="grid gap-2"></div>
+    <div id="cartEmpty" class="mt-4 text-sm text-ink/60 hidden">Пока пусто. Добавь что-нибудь из меню 🙂</div>
+  </div>
+
+  <div class="p-4 border-t border-line bg-white">
+    <div class="flex items-center justify-between">
+      <div class="text-sm text-ink/70">Итого</div>
+      <div class="text-lg font-semibold"><span id="cartTotal">0</span> ₽</div>
+    </div>
+
+    <div class="mt-3 grid grid-cols-2 gap-2">
+      <button id="cartClear" class="btn focus-ring" type="button">Очистить</button>
+      <a class="btn btn-primary focus-ring justify-center" href="contacts.html#form">Оформить</a>
+    </div>
+
+    <p class="mt-3 text-xs text-ink/60">
+      * Без оплаты на сайте. Заказ/бронь подтверждаются через сообщения.
+    </p>
+  </div>
+</aside>
+<div class="site-decor" aria-hidden="true"></div>
+
+  <script src="./assets/js/main.js"></script>
+
+</body>
+</html>
