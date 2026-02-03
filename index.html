@@ -2,6 +2,10 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <base href="/lesoria-site/">
+<link rel="stylesheet" href="styles.css?v=4">
+<script defer src="main.js?v=4"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Лесория — Авторская кофейня в Берёзовском</title>
   <meta name="description" content="Лесория — авторская кофейня в Берёзовском. Завтраки, паста, салаты, десерты и кофе. Восточная 8/1. Атмосфера тишины, вкуса и вдохновения." />
@@ -9,14 +13,16 @@
   <meta property="og:title" content="Лесория — Авторская кофейня" />
   <meta property="og:description" content="Берёзовский · Восточная 8/1 · Завтраки и авторский кофе. Место, куда хочется возвращаться." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./og-cover.svg" />
+<meta property="og:image" content="og-cover.svg" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="styles.css">
+
+
   <!-- Page transition overlay (must exist on every page) -->
 
 
@@ -44,27 +50,26 @@
       </nav>
 
       <!-- Actions -->
-      <div class="flex items-center gap-2">
-        <a href="contacts.html#form" class="hidden sm:inline-flex btn btn-primary focus-ring">
-          Написать
-          <span aria-hidden="true">→</span>
-          <button id="cartBtn" class="btn focus-ring relative" type="button" aria-label="Открыть корзину">
-  🛒 Корзина
-  <span id="cartCount"
-    class="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[11px] leading-[18px] text-center hidden">
-  </span>
-</button>
+<div class="flex items-center gap-2">
+  <a href="contacts.html#form" class="hidden sm:inline-flex btn btn-primary focus-ring">
+    Написать <span aria-hidden="true">→</span>
+  </a>
 
-        </a>
+  <button id="cartBtn" class="btn focus-ring relative" type="button" aria-label="Открыть корзину">
+    🛒 Корзина
+    <span id="cartCount"
+      class="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[11px] leading-[18px] text-center hidden">
+    </span>
+  </button>
 
-        <!-- Burger -->
-        <button id="menuBtn" class="md:hidden btn btn-ghost focus-ring" type="button" aria-label="Открыть меню" aria-expanded="false">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
+  <!-- Burger -->
+  <button id="menuBtn" class="md:hidden btn btn-ghost focus-ring" type="button" aria-label="Открыть меню" aria-expanded="false">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+
 
     <!-- Mobile overlay -->
     <div id="overlay" class="hidden fixed inset-0 bg-black/20 backdrop-blur-sm"></div>
@@ -327,7 +332,7 @@
 </aside>
 <div class="site-decor" aria-hidden="true"></div>
 
-  <script src="./assets/js/main.js"></script>
+
 
 </body>
 </html>

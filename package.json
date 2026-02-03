@@ -1,0 +1,20 @@
+{
+  "name": "lesoria-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "tw:watch": "tailwindcss -c tailwind.config.js -i ./src/input.css -o ./assets/css/styles.css --watch",
+    "tw:build": "tailwindcss -c tailwind.config.js -i ./src/input.css -o ./assets/css/styles.css --minify",
+    "dev": "concurrently -k \"npm:tw:watch\" \"vite --host --port 5173 --strictPort\"",
+    "build": "npm run tw:build && node ./scripts/build.mjs",
+    "preview": "vite preview --host --port 5173 --strictPort"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.6"
+  }
+}
